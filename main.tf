@@ -90,6 +90,9 @@ EOF
 
   filename = "${path.module}/../tmp/chirp-key.json"
 }
+
+resource "null_resource" "chirp_key_vars" {
+  triggers {
     chirp_iam_access_key = "${sha256("${aws_iam_access_key.chirp.id}")}"
     chirp_iam_secret_key = "${sha256("${aws_iam_access_key.chirp.secret}")}"
   }
